@@ -3,14 +3,15 @@ model WeatherCompare "Compares TRY and TMY3 weather data readers"
   import AixLib;
   extends Modelica.Icons.Example;
   Components.Weather.Weather weather(Cloud_cover = true, Wind_dir = true, Wind_speed = true, Air_temp = true, Air_press = true, Mass_frac = true, Rel_hum = true, Sky_rad = true, Ter_rad = true,
-    fileName=
-        "D:/GIT/AixLib/AixLib/Resources/WeatherData/TRY2010_12_Jahr_Modelica-Library.txt",
-
+    fileName="D:/GIT/AixLib/AixLib/Resources/WeatherData/TRY2010_12_Jahr_Modelica-Library.txt",
+    SOD=DataBase.Weather.SurfaceOrientation.SurfaceOrientationData_N_E_S_W_Hor(),
     redeclare model RadOnTiltedSurface =
-        AixLib.Building.Components.Weather.RadiationOnTiltedSurface.RadOnTiltedSurf_Liu)
-    "TRY weather data reader"                                                                                                                                                                               annotation(Placement(transformation(extent = {{-60, 16}, {6, 60}})));
+        AixLib.Building.Components.Weather.RadiationOnTiltedSurface.RadOnTiltedSurf_Perez)
+                                 "TRY weather data reader"                                                                                                                                                      annotation(Placement(transformation(extent = {{-60, 16}, {6, 60}})));
+
   AixLib.BoundaryConditions.WeatherData.ReaderTMY3 weaDat(filNam="D:/GIT/AixLib/AixLib/Resources/WeatherData/DEU_BW_Mannheim_107290_TRY2010_12_Jahr_BBSR.mos",
-      calTSky=AixLib.BoundaryConditions.Types.SkyTemperatureCalculation.HorizontalRadiation)
+      calTSky=AixLib.BoundaryConditions.Types.SkyTemperatureCalculation.HorizontalRadiation,
+    pAtmSou=AixLib.BoundaryConditions.Types.DataSource.File)
     "TMY3 weather data reader"
     annotation (Placement(transformation(extent={{-60,-60},{-20,-20}})));
   AixLib.BoundaryConditions.SolarIrradiation.DiffusePerez
@@ -25,8 +26,7 @@ model WeatherCompare "Compares TRY and TMY3 weather data readers"
 
   AixLib.BoundaryConditions.SolarIrradiation.DirectTiltedSurface
                                                           HDirTil[5](
-    til = {1.5707963267949,1.5707963267949,1.5707963267949,
-      1.5707963267949,0},
+    til={1.5707963267949,1.5707963267949,1.5707963267949,1.5707963267949,0},
     each lat=0.86393797973719,
     azi={3.1415926535898,1.5707963267949,0,-1.5707963267949,0})
     "Calculates direct solar radiation on titled surface for all directions"
