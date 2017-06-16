@@ -171,7 +171,6 @@ if __name__ == '__main__':
     if args.jmodelica:
         from pyjmi.examples import vdp
         vdp.run_demo()
-        break
 
     # if args.single_package:
     #     single_package = args.single_package
