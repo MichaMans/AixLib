@@ -7,4 +7,5 @@ test-documentation:
 	(cd $(ROOT)/AixLib; Resources/Scripts/runUnitTests.py --validate-html-only)
 
 test-jmodelica:
-	(cd $(ROOT)/AixLib && python ../bin/runUnitTests.py --batch --jmodelica)
+	(docker pull modelicainaction/jmodelica:1.0; \ 
+		cd $(ROOT)/AixLib && python ../bin/runUnitTests.py --batch --jmodelica)
