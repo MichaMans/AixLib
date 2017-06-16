@@ -125,7 +125,7 @@ if __name__ == '__main__':
     unit_test_group.add_argument("--show-gui",
                         help='Show the GUI of the simulator',
                         action="store_true")
-    unit_test_group.add_argument("--jmodelica",
+    unit_test_group.add_argument("-j", "--jmodelica",
                         help='only runs jmodelica')
 
     html_group = parser.add_argument_group("arguments to check html syntax only")
