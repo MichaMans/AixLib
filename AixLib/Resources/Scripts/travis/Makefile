@@ -8,4 +8,4 @@ test-documentation:
 
 test-jmodelica:
 	(docker pull modelicainaction/jmodelica:1.0; \ 
-		cd $(ROOT)/AixLib && python ../bin/runUnitTests.py --batch --jmodelica)
+		cd $(ROOT)/AixLib && python Resources/Scripts/runUnitTests.py --batch --jmodelica)
