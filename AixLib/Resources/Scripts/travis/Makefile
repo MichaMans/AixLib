@@ -7,4 +7,4 @@ test-documentation:
 	(cd $(ROOT)/AixLib; Resources/Scripts/runUnitTests.py --validate-html-only)
 
 test-jmodelica:
-	(cd $(ROOT)/AixLib && python Resources/Scripts/runUnitTests.py --batch --jmodelica)
+	(cd $(ROOT)/AixLib && python Resources/Scripts/runUnitTests.py --batch)

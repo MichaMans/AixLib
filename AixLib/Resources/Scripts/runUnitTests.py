@@ -125,8 +125,8 @@ if __name__ == '__main__':
     unit_test_group.add_argument("--show-gui",
                         help='Show the GUI of the simulator',
                         action="store_true")
-    unit_test_group.add_argument("-j", "--jmodelica",
-                        help='only runs jmodelica')
+    # unit_test_group.add_argument("-j", "--jmodelica",
+    #                     help='only runs jmodelica')
 
     html_group = parser.add_argument_group("arguments to check html syntax only")
     html_group.add_argument("--validate-html-only",
@@ -168,9 +168,8 @@ if __name__ == '__main__':
         ret_val = _validate_experiment_setup(args.path)
         exit(ret_val)
 
-    if args.jmodelica:
-        from pyjmi.examples import vdp
-        vdp.run_demo()
+    from pyjmi.examples import vdp
+    vdp.run_demo()
 
     # if args.single_package:
     #     single_package = args.single_package
